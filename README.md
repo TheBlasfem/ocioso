@@ -39,10 +39,18 @@ puts user.inspect
 If you define your writer methods you can initialize your variables using a block:
 
 ```ruby
-User.new do |user|
-  user.name = "Julio"
-  user.email = "julio@email.com"
+class User
+  include Ocioso
+  attr_writer :name, :email
 end
+
+user = User.new do |user|
+         user.name = "Julio"
+         user.email = "julio@email.com"
+       end
+
+puts user.inspect
+#=> <User @name = "Julio", @email = "julio@email.com">
 ```
 
 ## Allow certain Values
