@@ -3,8 +3,8 @@ require "./lib/ocioso"
 Gem::Specification.new do |s|
   s.name              = "ocioso"
   s.version           = Ocioso::VERSION
-  s.summary           = "Micro Library for initialize objects"
-  s.description       = "Micro Library for initialize objects"
+  s.summary           = "Micro Library for initialize variables in your ruby objects."
+  s.description       = "Micro Library for initialize variables in your ruby objects."
   s.authors           = ["Julio Lopez"]
   s.email             = ["ljuliom@gmail.com"]
   s.homepage          = "http://github.com/TheBlasfem/ocioso"

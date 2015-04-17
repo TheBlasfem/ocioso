@@ -1,6 +1,6 @@
 # Ocioso
 
-Micro Library for initialize objects
+Micro Library for initialize variables in your ruby objects.
 
 ## Installation
 
