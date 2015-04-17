@@ -6,23 +6,20 @@ module Ocioso
       @defaults ||= {}; @values_allowed ||= {}
       base.extend ClassMethods
     end
+
+    def get_values(klass)
+      [values_allowed[klass], defaults[klass]]
+    end
   end
 
   def initialize(vars = {}, &block)
     super()
-    if h = Ocioso.defaults[self.class]
-      vars = h.attributes.merge(vars)
-    end
+    _a, _h = Ocioso.get_values(self.class)
+    vars = _h.attributes.merge(vars) if _h
     vars.each do |k, v|
-      if Ocioso.values_allowed[self.class]
-        if Ocioso.values_allowed[self.class].include? k
-          instance_variable_set "@#{k}", v
-        end
-      else
-        instance_variable_set "@#{k}", v
-      end
+      instance_variable_set "@#{k}", v if (_a && _a.include?(k) || _a.nil? )
     end
-    yield(self) if block_given?
+    yield self if block_given?
   end
 
   module ClassMethods
