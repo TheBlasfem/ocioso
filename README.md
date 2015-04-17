@@ -33,7 +33,7 @@ user = User.new name: "Julio", email: "julio@email.com"
 # end
 
 puts user.inspect
-#<User @name = "Julio", @email = "julio@email.com">
+#=> <User @name = "Julio", @email = "julio@email.com">
 ```
 
 If you define your writer methods you can initialize your variables using a block:
@@ -57,7 +57,7 @@ end
 
 user = User.new name: "Julio", age: 25
 puts user.inspect
-#<User @name = "Julio">
+#=> <User @name = "Julio">
 ```
 
 ## Default Values
@@ -80,11 +80,11 @@ end
 
 user = User.new
 puts user.inspect
-#<User @name = "Julio", @email = "my_email@email.com">
+#=> <User @name = "Julio", @email = "my_email@email.com">
 
 other_user = User.new name: "Piero"
 puts other_user.inspect
-#<User @name = "Piero", @email = "my_email@email.com">
+#=> <User @name = "Piero", @email = "my_email@email.com">
 ```
 
 ## Open to Initialize
