@@ -51,4 +51,23 @@ scope do
     assert_equal user.instance_variable_get("@name"), "Piero"
     assert_equal user.instance_variable_get("@email"), "julio@gmail.com"
   end
+
+  test "initialize_defaults dont work with inheritance" do
+    class User
+      initialize_defaults name: "Julio"
+    end
+    class Admin < User; end
+    admin = Admin.new
+    assert_equal admin.instance_variable_get("@name"), nil
+  end
+
+  test "initialize only with" do
+    class DemoUser
+      include Ocioso
+      initialize_only_with :name, :email
+    end
+    user = DemoUser.new name: "Julio", age: 23
+    assert_equal user.instance_variable_get("@name"), "Julio"
+    assert_equal user.instance_variable_get("@age"), nil
+  end
 end
