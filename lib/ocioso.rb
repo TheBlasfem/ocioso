@@ -14,8 +14,8 @@ module Ocioso
 
   def initialize(vars = {}, &block)
     super()
-    _a, _h = Ocioso.get_values(self.class)
-    vars = _h.attributes.merge(vars) if _h
+    _a, _d = Ocioso.get_values(self.class)
+    vars = _d.attributes.merge(vars) if _d
     vars.each do |k, v|
       instance_variable_set "@#{k}", v if (_a && _a.include?(k) || _a.nil? )
     end
