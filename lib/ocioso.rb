@@ -1,9 +1,11 @@
 module Ocioso
-  def self.defaults; @defaults; end
-  def self.values_allowed; @values_allowed; end
-  def self.included(base)
-    @defaults ||= {}; @values_allowed ||= {}
-    base.extend ClassMethods
+  class << self
+    attr_reader :defaults, :values_allowed
+  
+    def included(base)
+      @defaults ||= {}; @values_allowed ||= {}
+      base.extend ClassMethods
+    end
   end
 
   def initialize(vars = {}, &block)
