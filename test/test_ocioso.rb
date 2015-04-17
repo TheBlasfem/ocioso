@@ -3,6 +3,7 @@ require File.expand_path("../lib/ocioso", File.dirname(__FILE__))
 scope do
   class User
     include Ocioso
+    attr_accessor :name, :email
   end
 
   test "init blank" do
@@ -18,25 +19,36 @@ scope do
   end
 
   test "init with block" do
-    u = Class.new(User) do
-      attr_accessor :name, :email
-    end
-    u_instance = u.new do |user|
+    user = User.new do |user|
       user.name = "Claudia"
       user.email = "clau@email.com"
     end
-    assert_equal u_instance.name, "Claudia"
-    assert_equal u_instance.email, "clau@email.com"
+    assert_equal user.name, "Claudia"
+    assert_equal user.email, "clau@email.com"
   end
 
   test "init mix, sending hash and block" do
-    u = Class.new(User) do
-      attr_accessor :name, :email
-    end
-    u_instance = u.new name: "Piero" do |user|
+    user = User.new name: "Piero" do |user|
       user.email = "piero@email.com"
     end
-    assert_equal u_instance.name, "Piero"
-    assert_equal u_instance.email, "piero@email.com"
+    assert_equal user.name, "Piero"
+    assert_equal user.email, "piero@email.com"
+  end
+
+  test "init with defaults" do
+    class User
+      initialize_defaults name: "Julio"
+    end
+    user = User.new
+    assert_equal user.instance_variable_get("@name"), "Julio"
+  end
+
+  test "customizing defaults" do
+    class User
+      initialize_defaults name: "Julio", email: "julio@gmail.com"
+    end
+    user = User.new name: "Piero"
+    assert_equal user.instance_variable_get("@name"), "Piero"
+    assert_equal user.instance_variable_get("@email"), "julio@gmail.com"
   end
 end
