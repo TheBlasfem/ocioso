@@ -60,12 +60,12 @@ If you want to only allow some certain variables, you can use `initialize_only_w
 ```ruby
 class User
   include Ocioso
-  initialize_only_with :name
+  initialize_only_with :name, :email
 end
 
-user = User.new name: "Julio", age: 25
+user = User.new name: "Julio", email: "julio@email.com", age: 25
 puts user.inspect
-#=> <User @name = "Julio">
+#=> <User @name = "Julio", @email = "julio@email.com">
 ```
 
 ## Default Values
