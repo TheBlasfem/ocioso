@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 module Ocioso
-  VERSION = "1.0.0"
+  VERSION = "1.0.1"
   class << self
     attr_reader :defaults, :values_allowed
   
