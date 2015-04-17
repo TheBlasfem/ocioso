@@ -49,7 +49,6 @@ module Ocioso
 
     def initialize_only_with(*args)
       Ocioso.values_allowed[self] = args
-      self
     end
   end
 
