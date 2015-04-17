@@ -97,7 +97,7 @@ puts other_user.inspect
 
 ## Open to Initialize
 
-You can still use your initialize method to do whatever you need, just not forget to send the `super method to handle the initialize of Ocioso.
+You can still use your initialize method to do whatever you need, just not forget to send the `super` method to handle the initialize of Ocioso.
 
 ```ruby
 class User
