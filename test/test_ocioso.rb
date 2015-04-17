@@ -70,4 +70,16 @@ scope do
     assert_equal user.instance_variable_get("@name"), "Julio"
     assert_equal user.instance_variable_get("@age"), nil
   end
+
+  test "respecting the initialize method" do
+    class User
+      def initialize(*args)
+        super(*args)
+        @ivar = "i'm alive!"
+      end
+    end
+    user = User.new surname: "Lopez"
+    assert_equal user.instance_variable_get("@surname"), "Lopez"
+    assert_equal user.instance_variable_get("@ivar"), "i'm alive!"
+  end
 end
