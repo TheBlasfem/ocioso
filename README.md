@@ -15,7 +15,7 @@ Include Ocioso in your Gemfile with gem 'ocioso' or require it with require 'oci
 Usage
 -----
 
-You can automatically instance variables without write an initialize method.
+You can automatically instance variables without write an initialize method, just send a hash with your name variables and its values when you instantiate a class.
 
 ```ruby
 class User
@@ -23,6 +23,14 @@ class User
 end
 
 user = User.new name: "Julio", email: "julio@email.com"
+
+# This is the same thing of do:
+# class User
+#   def initialize(name, email)
+#     @name = name
+#     @email = email
+#   end
+# end
 
 puts user.inspect
 #<User @name = "Julio", @email = "julio@email.com">
@@ -62,6 +70,14 @@ class User
   initialize_defaults name: "Julio", email: "my_email@email.com"
 end
 
+# This is the same thing of do:
+# class User
+#   def initialize(name = "Julio", email = "my_email@email.com")
+#     @name = name
+#     @email = email
+#   end
+# end
+
 user = User.new
 puts user.inspect
 #<User @name = "Julio", @email = "my_email@email.com">
@@ -73,7 +89,7 @@ puts other_user.inspect
 
 ## Open to Initialize
 
-You can still use your initialize method to do whatever you need, just not forget to send the super method to handle the initialize of Ocioso.
+You can still use your initialize method to do whatever you need, just not forget to send the `super method to handle the initialize of Ocioso.
 
 ```ruby
 class User
@@ -83,4 +99,4 @@ class User
     #doing whatever
   end
 end
-``
+```
